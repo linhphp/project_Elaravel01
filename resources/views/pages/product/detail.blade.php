@@ -16,20 +16,22 @@
             <img src="images/product-details/new.jpg" class="newarrival" alt="" />
             <h2>{{ $product->product_name }}</h2>
             <img src="frontend/image/rating.png" alt="" />
-            <span>
-                @if($product->unit_price === $product->promotion_price)
-                <span>{{ number_format($product->unit_price) }} VNĐ</span>
-                @else
-                <span style="text-decoration: line-through;">{{ number_format($product->unit_price) }} VNĐ</span> 
-                <span style="text-decoration: line-through;">{{ number_format($product->promotion_price) }} VNĐ</span>
-                @endif
-                <label>số lượng:</label>
-                <input type="number" min="1" name="quantity" value="1" />
-                <button type="button" class="btn btn-fefault cart">
-                    <i class="fa fa-shopping-cart"></i>
-                    Thêm vào giỏ hàng
-                </button>
-            </span>
+            <form action="" method="post">
+                <span>
+                    @if($product->unit_price === $product->promotion_price)
+                    <span>{{ number_format($product->unit_price) }} VNĐ</span>
+                    @else
+                    <span style="text-decoration: line-through;">{{ number_format($product->unit_price) }} VNĐ</span> 
+                    <span style="text-decoration: line-through;">{{ number_format($product->promotion_price) }} VNĐ</span>
+                    @endif
+                    <label>số lượng:</label>
+                    <input type="number" min="1" name="quantity" value="1" />
+                    <button type="button" class="btn btn-fefault cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Thêm vào giỏ hàng
+                    </button>
+                </span>
+            </form>
             <p><b>Còn Hàng:</b> Khả dụng</p>
             <p><b>Mã ID: </b>{{ $product->id }}</p>
             <p><b>Tình trạng:</b> Mới</p>
