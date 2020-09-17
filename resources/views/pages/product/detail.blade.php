@@ -16,7 +16,7 @@
             <img src="images/product-details/new.jpg" class="newarrival" alt="" />
             <h2>{{ $product->product_name }}</h2>
             <img src="frontend/image/rating.png" alt="" />
-<<<<<<< HEAD
+
             <span>
                 @if($product->unit_price === $product->promotion_price)
                 <span>{{ number_format($product->unit_price) }} VNĐ</span>
@@ -31,7 +31,7 @@
                     Thêm vào giỏ hàng
                 </button>
             </span>
-=======
+
             <form action="" method="post">
                 <span>
                     @if($product->unit_price === $product->promotion_price)
@@ -48,7 +48,6 @@
                     </button>
                 </span>
             </form>
->>>>>>> xong phan product
             <p><b>Còn Hàng:</b> Khả dụng</p>
             <p><b>Mã ID: </b>{{ $product->id }}</p>
             <p><b>Tình trạng:</b> Mới</p>
