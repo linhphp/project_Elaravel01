@@ -18,9 +18,11 @@ Route::get('/trang-chu','HomeController@index')->name('home');
 // danh muc va thuong hieu
 Route::get('shop/danh-muc-san-pham/{id}','CategoryProductController@showCateHome')->name('cate_pro');
 Route::get('shop/thuong-hieu-san-pham/{id}','BrandProductController@showBrandHome')->name('brand');
-Route::get('chi-tiet-san-pham/{id}','ProductController@detail')->name('detail');
+Route::get('chi-tiet-san-pham/{rowId}','ProductController@detail')->name('detail');
 
-
+Route::post('them-vao-gio-hang','CartController@addCart')->name('addToCart');
+Route::get('them-vao-gio-hang','CartController@showCart')->name('showCart');
+Route::get('xoa-gio-hang/{id}','CartController@destroy')->name('delete.cart');
 //-------------backend-------------------------------
 Route::get('admin','AdminController@index')->name('admin');
 Route::get('dashboard','AdminController@show_dashboard')->name('dashboard');

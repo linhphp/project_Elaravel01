@@ -8,6 +8,7 @@
         <div class="product-image-wrapper">
             <div class="single-products">
                 <a href="{{ route('detail',$product->id) }}">
+                    <form action="{{ route('addToCart') }}" method="post">
                     <div class="productinfo text-center">
                         <img src="upload/product/{{ $product->image }}" alt="" />
                         @if($product->unit_price === $product->promotion_price)
@@ -16,8 +17,9 @@
                         <h2><span style="text-decoration: line-through;">{{ number_format($product->unit_price) }} VNĐ</span> <span>{{ number_format($product->promotion_price) }}VNĐ</span></h2>
                         @endif
                         <p>{{ $product->product_name }}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                        <button class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
                     </div>
+                </form>
                 </a>
             </div>
             <div class="choose">
