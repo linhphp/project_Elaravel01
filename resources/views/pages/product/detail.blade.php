@@ -20,22 +20,21 @@
             <form action="{{ route('addToCart') }}" method="post">
                 @method('POST')
                 @csrf
-                <span>
-                    @if($product->unit_price === $product->promotion_price)
-                    <span>{{ number_format($product->unit_price) }} VNĐ</span>
-                    @else
-                    <span style="text-decoration: line-through;">{{ number_format($product->unit_price) }} VNĐ</span> 
-                    <span style="text-decoration: line-through;">{{ number_format($product->promotion_price) }} VNĐ</span>
-                    @endif
-                    <label>số lượng:</label>
-                    <input type="number" min="1" name="quantity" value="1" />
-                    <input type="hidden" min="1" name="pro_id" value="{{ $product->id }}" />
-                    <button type="submit" class="btn btn-fefault cart">
-                        <i class="fa fa-shopping-cart"></i>
-                        Thêm vào giỏ hàng
-                    </button>
-                </span>
-            </form>
+            <span>
+                @if($product->unit_price === $product->promotion_price)
+                <span>{{ number_format($product->unit_price) }} VNĐ</span>
+                @else
+                <span style="text-decoration: line-through;">{{ number_format($product->unit_price) }} VNĐ</span> 
+                <span style="text-decoration: line-through;">{{ number_format($product->promotion_price) }} VNĐ</span>
+                @endif
+                <label>số lượng:</label>
+                <input type="number" min="1" name="quantity" value="1" />
+                <button type="button" class="btn btn-fefault cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    Thêm vào giỏ hàng
+                </button>
+            </span>
+            </form>                
 
             <p><b>Còn Hàng:</b> Khả dụng</p>
             <p><b>Mã ID: </b>{{ $product->id }}</p>
