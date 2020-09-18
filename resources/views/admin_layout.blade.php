@@ -127,6 +127,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="{{ route('san-pham.index') }}">danh sách sản phẩm</a></li>
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Đơn hàng</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('quan-ly-don-hang.index') }}">Quản lý đơn hàng</a></li>
+                        <li><a href="{{ route('san-pham.index') }}">danh sách sản phẩm</a></li>
+                    </ul>
+                </li>
                 
                 <li>
                     <a href="login.html">

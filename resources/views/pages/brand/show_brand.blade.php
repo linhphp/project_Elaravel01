@@ -13,6 +13,8 @@ thuong hieu - {{ $brand->brand_name }}
                     <form action="{{ route('addToCart') }}" method="post">
                         @method('POST')
                         @csrf
+                        <input type="hidden" min="1" name="quantity" value="1" />
+                        <input type="hidden" min="1" name="pro_id" value="{{ $product->id }}" />
                         <a href="{{ route('detail',$product->id) }}">
                             <div class="productinfo text-center">
                                 <img src="upload/product/{{ $product->image }}" alt="" />

@@ -95,9 +95,14 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_qty(Request $request)
     {
         //
+        $rowId = $request->rowId_cart;
+        $qty =$request->quantity;
+        Cart::update($rowId,$qty);
+        return redirect()->back();
+
     }
 
     /**
@@ -110,6 +115,15 @@ class CartController extends Controller
     {
         //
         Cart::update($rowId,0);
-        return redirect()->route('showCart');
+        $cart = Cart::content();
+        if($cart != '[]'){
+        // echo $cart;
+            // echo 'da xoa';
+        return redirect()->back();
+        }
+        else{
+            Cart::destroy($rowId);
+            return redirect()->route('home');
+        }
     }
 }

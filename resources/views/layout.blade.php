@@ -33,12 +33,14 @@
     
         @include('header/header_bootom')
     </header><!--/header-->
-    
+    @if(Route::currentRouteName() !='checkout.login')
     @include('layout_slide');
-    
+
+    @endif
     <section> <!--content-->
         <div class="container">
             <div class="row">
+                 @if(Route::currentRouteName() !='checkout.login')
                 <div class="col-sm-3">
                     <div class="left-sidebar">
                         <h2>Danh mục sản phẩm</h2>
@@ -64,6 +66,8 @@
                         </div><!--/brands_products-->
                     </div>
                 </div>
+    @endif
+                
                 {{-- end sizebar --}}
                 <div class="col-sm-9 padding-right overflow-hidden">
                         <!--features_items-->

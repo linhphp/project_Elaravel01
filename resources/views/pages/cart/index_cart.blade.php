@@ -10,16 +10,12 @@ giỏ hàng
 		  <li class="active">giỏ hàng của bạn</li>
 		</ol>
 	</div>
+		@if($content != '[]')
 	<div class="table-responsive cart_info">
 
-		<?php 
-		
-		//echo"<pre>";
-		//print_r($content);
-		//echo"</pre>";
-		?>
 		<table class="table table-condensed">
 			<thead>
+				
 				<tr class="cart_menu">
 					<td class="image">hình ảnh</td>
 					<td class="name">tên sản phẩm</td>
@@ -44,9 +40,13 @@ giỏ hàng
 						</td>
 						<td class="cart_quantity">
 							<div class="cart_quantity_button">
-								<a class="cart_quantity_up" href=""> + </a>
+							<form action="{{ route('cart.update_qty') }}" method="post">
+								@method('POST')
+								@csrf
 								<input class="cart_quantity_input" type="text" name="quantity" value="{{ $cnt->qty }}" autocomplete="off" size="2">
-								<a class="cart_quantity_down" href=""> - </a>
+								<input type="hidden" name="rowId_cart" value="{{ $cnt->rowId }}">
+								<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
+							</form>
 							</div>
 						</td>
 						<td class="cart_total">
@@ -67,61 +67,8 @@ giỏ hàng
 		<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
 	</div>
 	<div class="row">
-		<div class="col-sm-6">
-			<div class="chose_area">
-				<ul class="user_option">
-					<li>
-						<input type="checkbox">
-						<label>sử dụng mã giảm giá</label>
-					</li>
-					<li>
-						<input type="checkbox">
-						<label>sủ dụng phiếu quà tặng</label>
-					</li>
-					<li>
-						<input type="checkbox">
-						<label>ước tính vận chuyển</label>
-					</li>
-				</ul>
-				<ul class="user_info">
-					<li class="single_field">
-						<label>quốc gia:</label>
-						<select>
-							<option>United States</option>
-							<option>Bangladesh</option>
-							<option>UK</option>
-							<option>India</option>
-							<option>Pakistan</option>
-							<option>Ucrane</option>
-							<option>Canada</option>
-							<option>Dubai</option>
-						</select>
-						
-					</li>
-					<li class="single_field">
-						<label>thành phố:</label>
-						<select>
-							<option>Select</option>
-							<option>Dhaka</option>
-							<option>London</option>
-							<option>Dillih</option>
-							<option>Lahore</option>
-							<option>Alaska</option>
-							<option>Canada</option>
-							<option>Dubai</option>
-						</select>
-					
-					</li>
-					<li class="single_field zip-field">
-						<label>Zip Code:</label>
-						<input type="text">
-					</li>
-				</ul>
-				<a class="btn btn-default update" href="">Get Quotes</a>
-				<a class="btn btn-default check_out" href="">Continue</a>
-			</div>
-		</div>
-		<div class="col-sm-6">
+		
+		<div class="col-sm-12">
 			<div class="total_area">
 				<ul>
 					<li>Tổng tiền <span>{{ Cart::initial() }} VNĐ</span></li>
@@ -129,11 +76,16 @@ giỏ hàng
 					<li>phí vận chuyển <span>pree</span></li>
 					<li>thành tiền <span>{{ Cart::total() }}VNĐ</span></li>
 				</ul>
-					<a class="btn btn-default update" href="">Update</a>
-					<a class="btn btn-default check_out" href="">Check Out</a>
+				@if((Session::has('cus_id')) || (Session::has('shipping')))
+                    <a href="{{ route('checkout.out') }}" class="btn btn-default check_out"><i ></i> thanh toán</a>
+                @else
+					<a class="btn btn-default check_out" href="{{ route('checkout.login') }}">Thanh Toán</a>
+                @endif
 			</div>
 		</div>
 	</div>
 </section><!--/#do_action-->
-	
+	@else
+	<h2 class="alert-danger text-center">chưa có sản phẩm trong giỏ hàng, vui vòng đặt hàng rồi quay lại đây</h2>
+	@endif
 @endsection

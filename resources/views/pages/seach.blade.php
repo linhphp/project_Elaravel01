@@ -1,8 +1,8 @@
 @extends('layout')
 @section('content')
-@section('title','trang - chu')
+@section('title','tim kiem')
 <div class="features_items">
-    <h2 class="title text-center">sản phẩm mới</h2>
+    <h2 class="title text-center">tìm thấy <span style="color: darkred;">{{ count($products) }}</span> sản phẩm với <span style="color: darkred;">{{ $result }}</span></h2>
     @foreach($products as $product)
     <div class="col-sm-4">
         <div class="product-image-wrapper">
@@ -39,6 +39,5 @@
     
 </div>
 {{-- end Features Items --}}
-<div class="row">{!! $products->links() !!}</div>
 {{-- end category-tab --}}
 @endsection

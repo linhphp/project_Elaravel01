@@ -1,7 +1,7 @@
 <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-6">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="sr-only">Toggle navigation</span>
@@ -27,11 +27,18 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
-                        </div>
+                    <div class="col-sm-6">
+                        <form action="{{ route('product.seach',) }}" method="get">
+                            <div class="search_box pull-right">
+                                <input style="width: 70%;" type="text" name="key" placeholder="Search"/>
+                                <input style="width: 25%;" class="btn" type="submit" name="submit" value="seach">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div><!--/header-bottom-->
+        @if(Session::has('payment'))
+    <h2 class="title text-center">Đặt hàng thành công</h2>
+    @endif
+        
